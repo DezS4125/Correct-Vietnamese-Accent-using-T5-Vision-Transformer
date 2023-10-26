@@ -5,6 +5,16 @@ model = AutoModelForSeq2SeqLM.from_pretrained("path_to_your_model")
 
 from datasets import Dataset
 
+
+# split dataset
+from sklearn.model_selection import train_test_split
+
+# Assuming `dataset` is your original dataset
+train_dataset, eval_dataset = train_test_split(dataset, test_size=0.2)
+
+# Now you can use `train_dataset` for training and `eval_dataset` for evaluation
+
+
 # Prepare your data
 input_lines = []
 label_lines = []
@@ -64,3 +74,4 @@ def plot_graphs(history):
 
 # Call the function
 plot_graphs(trainer.state.log_history)
+
